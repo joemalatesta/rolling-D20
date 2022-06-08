@@ -4,8 +4,8 @@ let sides = 20
 let initialSide = 1
 let lastFace
 let timeoutId
-let transitionDuration = 500
-let animationDuration  = 300
+let transitionDuration = 300
+let animationDuration  = 200
 
 document.querySelector( 'click',  (evt) => {
   

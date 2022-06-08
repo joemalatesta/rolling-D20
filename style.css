@@ -125,7 +125,7 @@ body {
   margin: 0 -50px;
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
-  border-bottom: 86px solid rgba(21, 25, 239, 0.865);
+  border-bottom: 86px solid rgba(157, 2, 2, 0.525);
   width: 0px;
   height: 0px;
   transform-style: preserve-3d;
@@ -138,8 +138,8 @@ body {
   position: absolute;
   top: 21.5px;
   left: -100px;
-  color: rgb(50, 220, 27);
-  text-shadow: 1px 1px 3px rgb(160, 8, 8);
+  color: rgb(220, 191, 27);
+  text-shadow: 1px 1px 3px rgb(0, 0, 0);
   font-size: 43px;
   text-align: center;
   line-height: 77.4px;
