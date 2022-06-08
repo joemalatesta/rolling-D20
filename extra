@@ -1,0 +1,44 @@
+
+  const die = document.getElementsByClassName("die")
+  let sides = 20
+  let initialSide = 1
+  let lastFace
+  let timeoutId
+  let transitionDuration = 500
+  let animationDuration  = 3000
+
+  $('ul > li > a').click(function () {
+    reset()
+    rollTo(this.attr('href'))
+    
+    return false
+  })
+
+  function randomFace() {
+    let face = Math.floor((Math.random() * sides)) + initialSide
+    lastFace = face == lastFace ? randomFace() : face
+    return face;
+  }
+
+  function rollTo(face) {
+    clearTimeout(timeoutId)
+    
+    $('ul > li > a').classList.remove("active")
+    $('[href=' + face + ']').classList.add("active")
+    
+    die.attr('data-face', face)
+  }
+
+  function reset() {
+    die.attr('data-face', null).classList.remove("rolling")
+  }
+
+  $('.randomize, .die').click(function () {
+    die.addClass('rolling')
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(function () {
+      die.removeClass('rolling')
+       rollTo(randomFace())
+    }, animationDuration)
+    return false
+  })

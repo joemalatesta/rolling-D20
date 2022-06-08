@@ -1,48 +1,44 @@
-var die = document.querySelector('die'),
-    sides = 20,
-    initialSide = 1,
-    lastFace,
-    timeoutId,
-    transitionDuration = 500, 
-    animationDuration  = 3000
+const die = document.getElementById("die")
+const roll = document.getElementById('roll')
+let sides = 20
+let initialSide = 1
+let lastFace
+let timeoutId
+let transitionDuration = 500
+let animationDuration  = 300
 
-document.querySelector('ul > li > a').click(function () {
-  reset()
-  rollTo(document.querySelector(this).attr('href'))
+document.querySelector( 'click',  (evt) => {
   
+  rollTo(document.querySelector(this).attr('href'))
   return false
-})
+},('ul > li > a'))
 
-function randomFace() {
-  var face = Math.floor((Math.random() * sides)) + initialSide
+const randomFace = () => {
+  let face = Math.floor((Math.random() * sides)) + initialSide
   lastFace = face === lastFace ? randomFace() : face
   return face;
 }
 
-function rollTo(face) {
+
+const rollTo = (face) => {
+  const group = document.querySelector('ul > li > a')
+  const added = document.getElementsByClassName('[href=' + face + ']')
   clearTimeout(timeoutId)
-  
-  document.querySelector('ul > li > a').classList.remove('active')
-  document.querySelector('[href=' + face + ']').classList.add('active')
-  
-  die.attr('data-face', face)
+  die.setAttribute('data-face', face)
 }
 
-function reset() {
-  die.attr('data-face', null).classList.remove('rolling')
-}
-
-document.querySelector('.randomize, .die').click(function () {
-  die.classList.add('rolling')
-  clearTimeout(timeoutId)
+const reset = () => {
+    die.attr('data-face', null).classList.remove('rolling')
+  }
   
+  document.addEventListener('click', (evt) => {
+    evt.preventDefault()
+    // die.classList.add('rolling')
+  clearTimeout(timeoutId)
   timeoutId = setTimeout(function () {
-    die.classList.remove('rolling')
-    
+    //die.classList.remove('rolling')
     rollTo(randomFace())
   }, animationDuration)
-  
   return false
-})
-
+},('.randomize, .die'))
 
